@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)https://i5.walmartimages.com/dfw/63fd9f59-d6ba/07b8ea82-184c-4ea3-8ac0-5dc1981e40c8/v33/safeframe.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Safeframe Container</title><script>var TBCDNList=[[1,0],[2,100],[3,0],[4,0]];</script><style>body {
+  margin: 0px;
+}</style></head><body><script>!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=4)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ExtActionEnum=void 0,t.ExtActionEnum={CLICK:"click",INIT:"init",READ_COOKIE:"read_cookie",RESIZE:"resize",WRITE_COOKIE:"write_cookie"}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.HostActionEnum=void 0,t.HostActionEnum={READ_COOKIE:"read_cookie",UPDATE_CREATIVE_POSITION:"update_creative_position",UPDATE_POSITION:"update_position",UPDATE_SCREEN_SIZE:"update_screen_size",WRITE_COOKIE:"write_cookie"}},function(e,t){function n(){return e.exports=n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},n.apply(this,arguments)}e.exports=n},function(e,t,n){"use strict";t.__esModule=!0,t.default=function(e,t){var n=null;return function(){null!==n&&clearTimeout(n);var o=arguments,i=this;n=setTimeout((function(){e.apply(i,o)}),t)}}},function(e,t,n){"use strict";n.r(t);var o=n(0),i=n(1),r={error:[],metaChange:[],readCookie:[],ready:[],sizeChange:[],stateChange:[],writeCookie:[]},u=function(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),o=1;o<t;o++)n[o-1]=arguments[o];r[e].forEach((function(e){return e.apply(void 0,n)}))},c=n(2),a=n.n(c),d="",s=function(e){window.top.postMessage(JSON.stringify(a()({id:d},e)),"*")},f={expand:!0,"read-cookie":!0,resize:!0,"resize-push":!0,"write-cookie":!0},v=function(e){return e?!!f[e]:f},l=function(e){try{JSON.parse(e)}catch(e){return!1}return!0},p=[];window.addEventListener("message",(function(e){p.forEach((function(t){try{if(l(e.data)){var n=JSON.parse(e.data);n.type&&t(n)}}catch(e){0}}))}));var E=function(e){return p.push(e),function(){p=p.filter((function(t){return t!==e}))}};E((function(e){var t=e.type,n=void 0===t?"":t,o=e.payload;if(n===i.HostActionEnum.READ_COOKIE){var r=o.cookie;u("readCookie",r)}else if(n===i.HostActionEnum.WRITE_COOKIE){var c=o.cookie;u("writeCookie",c)}}));var h,y=n(3),g=function(){var e=document.body.getBoundingClientRect(),t=e.width;return{height:e.height,width:t}},O="loading",_=function(e){O!==e&&u("stateChange"),O=e},m=n.n(y)()((function(){var e={payload:g(),type:o.ExtActionEnum.RESIZE};s(e)}),250),I=function(e){void 0===e&&(e=!0),m(),e&&(_("resized"),u("sizeChange"))},w=0,C=0;E((function(e){var t=e.type,n=void 0===t?"":t,o=e.payload;n===i.HostActionEnum.UPDATE_CREATIVE_POSITION&&(w=o.x,C=o.y,h||(h=a()({},g(),{x:w,y:C})))}));var A=0;E((function(e){var t=e.type,n=void 0===t?"":t,o=e.payload;n===i.HostActionEnum.UPDATE_CREATIVE_POSITION&&(A=o.intersectionRatio)}));var T=0,b=0;E((function(e){var t=e.type,n=void 0===t?"":t,o=e.payload;switch(n){case"update_creative_position":case"update_screen_size":b=o.screenHeight||o.height,T=o.screenWidth||o.width}}));var R=function(e,t){if("undefined"!=typeof ResizeObserver){var n=new ResizeObserver((function(e){e[0];t()}));return n.observe(e),function(){n.unobserve(e)}}var o=e.getBoundingClientRect(),i=o.width,r=o.height,u=setInterval((function(){var n=e.getBoundingClientRect();r===n.height&&i===n.width||(r=n.height,i=n.width,t())}),50);return function(){clearTimeout(u)}},P={ext:{addEventListener:function(e,t){r[e].push(t)},cookie:function(e,t){t&&e&&v("write-cookie")?s({payload:{cookie:{data:t,name:e}},type:o.ExtActionEnum.WRITE_COOKIE}):e&&v("read-cookie")&&s({payload:{cookie:{name:e}},type:o.ExtActionEnum.READ_COOKIE})},getCurrentPosition:function(){return a()({},g(),{x:w,y:C})},getDefaultPosition:function(){return h},getInViewPercentage:function(){return A},getScreenSize:function(){return{height:b,width:T}},getState:function(){return O},getVersion:function(){return"0.0.1-alpha"},removeEventListener:function(e,t){r[e]=r[e].filter((function(e){return e!==t}))},supports:v},version:"0.0.1-alpha"};window.$sf=P;var S=JSON.parse(decodeURIComponent(window.name)),k=S.id,x=S.html,K=S.config,j=(void 0===K?{}:K).sfLoadEvent,z=void 0===j?"instant":j;d=k;var L="WalmartActiveViewElement";document.write('<div id="'+L+'">'+x+"</div>");var N=document.getElementById(L);if(N){var D,M,H,U,V=!1,W=function(){var e;V||(e={payload:void 0,type:o.ExtActionEnum.CLICK},s(e),V=!0)};N.addEventListener("mousedown",(function(e){D||M||function(e){return!(e.metaKey||e.ctrlKey||e.altKey||e.shiftKey)&&("buttons"in e?1===e.buttons:"which"in e?1===e.which:1===e.button||"click"===e.type)}(e)&&W()})),N.addEventListener("touchstart",(function(e){D=e.changedTouches[0].screenX,M=e.changedTouches[0].screenY})),N.addEventListener("touchend",(function(e){H=e.changedTouches[0].screenX,U=e.changedTouches[0].screenY,H===D&&U===M&&W()}))}var B=!1,J=function(){var e;B||(B=!0,R(document.body,I),e={payload:void 0,type:o.ExtActionEnum.INIT},s(e),u("ready"),I(!1),_("default"))};"instant"===z?J():(N&&N.addEventListener(z,J),window.addEventListener(z,J))}]);</script><div id="WalmartActiveViewElement">
+    
+  <style>
+    iframe{
+      display: none;
+      border: none;
+      opacity: 0;
+    }
+  </style>
+    
+    <style>
+      :root {
+        --border-radius: 8px;
+        --shadow: 4px;
+        --desktop-height: 178px;
+        --mobile-height: 130px;
+        --mobile-logo-height: 50px;
+        --font-family: Bogle, BogleWeb, Regular;
+      }
+      #WalmartActiveViewElement {
+        overflow: hidden;
+      }
+      a.adctr {
+        text-decoration: none;
+      }
+      .tile-container {
+        height: calc(var(--mobile-height) + var(--shadow));
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .tile {
+        width: 100%;
+        margin: 2px 0 0 2px;
+        position: relative;
+        height: var(--mobile-height);
+        border-radius: var(--border-radius);
+        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .img-container {
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+      }
+      .img {
+        object-fit: contain;
+        content: url(https://tpc.googlesyndication.com/simgad/5655522376429734569?)
+      }
+      .copy {
+        width: 100%;
+        box-sizing: border-box;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+        background: #FFFFFF;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 1;
+      }
+      .logo {
+        width: 110px;
+        height: 50px;
+        object-fit: cover;
+        object-position: top;
+        content: url(https://tpc.googlesyndication.com/simgad/8307602077684688974?)
+      }
+      .accent-bar {
+        display: none;
+        width: 1px;
+        background: #F1F1F2;
+      }
+      .copy-main {
+        position: relative;
+        font-family: var(--font-family);
+        color: #2E2F32;
+        margin: 0;
+      }
+      .headline {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        position: absolute;
+        bottom: 0;
+        color: #2E2F32;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      .subhead {
+        display: none;
+        color: #2E2F32;
+      }
+      .cta {
+        display: none;
+        border-radius: 100px;
+        position: absolute;
+        bottom: 0;
+        height: 32px;
+        box-sizing: border-box;
+        box-shadow: inset 0 0 0 1px #000;
+        padding: 0 16px;
+        font-size: 14px;
+        line-height: 30px;
+        font-weight: 700;
+        text-align: center;
+        color: #2E2F32;
+        background: #FFFFFF;
+        border: 1px solid #2E2F32;
+        white-space: nowrap;
+      }
+      @media only screen and (min-width: 553px)  {
+        .tile-container {
+          height: calc(var(--desktop-height) + var(--shadow));
+        }
+        .tile {
+          height: var(--desktop-height);
+        }
+        .img {
+          content: url(https://tpc.googlesyndication.com/simgad/15691463292599365538?)
+        }
+        .img-container {
+          width: 544px;
+        }
+        .copy-main {
+          height: 100%;
+        }
+        .headline {
+          font-size: 20px;
+          line-height: 28px;
+          font-weight: 700;
+          bottom: auto;
+          margin-top: 8px;
+        }
+        .cta {
+          display: block;
+        }
+      }
+      @media only screen and (min-width: 853px) {
+        .img {
+          content: url(https://tpc.googlesyndication.com/simgad/3502554213628798611?)
+        }
+        .logo {
+          width: 61px;
+          height: 82px;
+          content: url(https://tpc.googlesyndication.com/simgad/8307602077684688974?)
+        }
+        .headline {
+          top: 0;
+        }
+        .cta {
+          display: none;
+        }
+      }
+      @media only screen and (min-width: 976px) {
+        .img-container {
+          width: 755px;
+        }
+        .cta {
+          display: none;
+        }
+      }
+      @media only screen and (min-width: 1135px) {
+        .headline {
+          position: relative;
+          margin-bottom: 8px;
+        }
+        .logo {
+          width: 100px;
+          height: 130px;
+        }
+        .subhead {
+          display: block;
+        }
+        .accent-bar {
+          display: block;
+          margin: 0 8px 0 16px;
+        }
+        .copy {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          padding: 16px;
+          padding-right: 8px;
+        }
+        .cta {
+          display: block;
+        }
+      }
+      @media only screen and (min-width: 1183px) {
+        .copy {
+          padding: 24px;
+        }
+        .accent-bar {
+          margin: 0 24px;
+      }
+      @font-face {
+        font-family: BogleWeb;
+        src: url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Bold.woff2) format("woff2"), url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Bold.woff) format("woff");
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: BogleWeb;
+        src: url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Regular.woff2) format("woff2"), url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Regular.woff) format("woff");
+        font-weight: 400;
+      }
+    </style>
+  
+    
+    <a href="https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjss2N9guKN0Ptgf_iTQquoSTqDER3MleLDDNxTBG_1Oe7IMZx2SohbY91WgwGunuL-iVccuMbUI7dZTn3fkQQQgNhGqRUGy0-6x303dOP0MSDaXCMB4hN4ycUNc5BX5JaFmXhtRz8uVPKEtshaoqT3jiZCH6vMD3uVFhE5WVj1AjKTpq0MxIfxQhgarE1dlvex_IPhfbHYkMbgHlmpyBASenXF0lCbxpiPND9k43G75BTZ4tAQDHINAABcjAcfavXVmBexzcDcK6HGuVg_WMklsiu8ZYk1GbDGTcszvCPNchEKCwzDHQI22w3nm8tE9JsLXePMalJGJku2I1yrcPRsya6S6N9qtWTn5j3MgqrhTLKu6VPQ&amp;sai=AMfl-YQa3U_zqlfQTMiS08FQ3aaTeflrmVZgdCdqJw5N_UG5v7gMaN0eO4XsuCD_byfBrR88AWKJY4LLIcn9YvgnV38Q-nbX9l7k1uCCROgVBZ4gpw0hGrju2M_LFA&amp;sig=Cg0ArKJSzHfU56iI_3pzEAE&amp;fbs_aeid=%5Bgw_fbsaeid%5D&amp;urlfix=1&amp;adurl=https://www.walmart.com/ip/Pikmin-4-Nintendo-Switch/2580707903" class="adctr" target="_top" aria-label=". Grow, gather, guide. Lead your lil&#39; friends &amp; explore a colorful world. Shop now. Sponsored">  
+      <div class="tile-container">
+        <div class="tile">
+          <div class="copy">
+            <img class="logo" alt="">
+            <div class="accent-bar"></div>
+            <div class="copy-main">
+              <div class="headline">Grow, gather, guide</div>
+              <div class="subhead">Lead your lil' friends &amp; explore a colorful world.</div>
+              <div class="cta">Shop now</div>
+            </div>
+          </div>
+          <div class="img-container">
+            <img class="img" alt="Three little Pikmin characters stand on top of a wooden floor side by side a showcase Nintendo Switch OLED and Pikmin4.">        
+          </div>
+        </div>
+      </div>
+    </a>
+  
+    
+      <script>
+         document.write('<img src=https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjsta-3MM-1N-pIWftv2PWrvpZLr_75DAik9iyxeu504ZvdrPk6BKYlrrj3an1_hzKEiXdd7Vcpchp6O7-P7UYvHHRdDhtV3t-Qp3x9njI7UDFB1zK-IBTRPKOz13IZl1kNGJoCZ1D-p3MHq_Vapv8eHN6GvXbmg7Fq9PyHPYGim_6F06u7WyaPx33IuY6GpTXCBTQQEkuYDmqjy4sDfcVGOKnJxJ2I1SuLwmvCMMaCamN6JdZdSsj3yhAHQzt8pMjahGkH2BHhD7B6_7x0W0IJuLP0p6qoaWoyL2VRJEUVX3eCawhCEz7jrC_1E9Vof_HiNsT6dP0_Xt-i4dHVr9fgvbLO12VmByP1unOMCm6Y1XWBP9uYSgVWgQkJvAgvYNpLXLCXUpBsgK78ftvd_-CJqS87e-r8LQhw&sai=AMfl-YTO1I3RqbXOCBkbMxlnuoovIEMq9GgZlRe0QkozFtgH8a_MP_zl-nr7dA53HzQW0sc-DFYeI6H6cC47J-TR78l9ffnTpYh_eovbB0I4edYuDfxKbU0jBQi1yea9p0ab9Mfx&sig=Cg0ArKJSzNo_EHfhuJTzEAE&uach_m=%5BUACH%5D&urlfix=1&adurl= alt="" aria-label="" style="width:0;height:0;display:block"/>');
+      </script><img src="./view" alt="" aria-label="" style="width:0;height:0;display:block">
+    
+    
+    
+    
+    
+    
+  </div></body></html>
