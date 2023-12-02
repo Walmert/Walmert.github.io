@@ -16,8 +16,8 @@
       :root {
         --border-radius: 8px;
         --shadow: 4px;
-        --desktop-height: 178px;
-        --mobile-height: 130px;
+        --desktop-height: 174px;
+        --mobile-height: 126px;
         --mobile-logo-height: 50px;
         --font-family: Bogle, BogleWeb, Regular;
       }
@@ -27,186 +27,159 @@
       a.adctr {
         text-decoration: none;
       }
-      .tile-container {
+      #tile-container {
         height: calc(var(--mobile-height) + var(--shadow));
-        width: 100%;
         border-radius: 10px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
-      .tile {
-        width: 100%;
+      #tile {
         margin: 2px 0 0 2px;
         position: relative;
         height: var(--mobile-height);
         border-radius: var(--border-radius);
         box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
         overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
       }
-      .img-container {
-        width: 200px;
-        display: flex;
-        flex-direction: row;
-        justify-content: right;
+      #img, #copy-overlay, #copy {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
       }
-      .img {
-        object-fit: contain;
-        content: url(https://tpc.googlesyndication.com/simgad/5655522376429734569?)
-      }
-      .copy {
+      #img {
         width: 100%;
+        border-radius: var(--border-radius);
+        z-index: 1;
+        object-fit: cover;
+        object-position: right;
+      }
+      #copy-overlay, #copy {
+        width: 142px;
         box-sizing: border-box;
         border-top-left-radius: var(--border-radius);
         border-bottom-left-radius: var(--border-radius);
+      }
+      #copy-overlay {
         background: #FFFFFF;
+        z-index: 2;
+      }
+      #copy {
+        z-index: 3;
         padding: 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1;
+        display: block;
       }
-      .logo {
+      #logo {
         width: 110px;
-        height: 50px;
-        object-fit: cover;
-        object-position: top;
-        content: url(https://tpc.googlesyndication.com/simgad/8307602077684688974?)
+        height: var(--mobile-logo-height);
       }
-      .accent-bar {
+      #accent-bar {
         display: none;
-        width: 1px;
-        background: #F1F1F2;
       }
-      .copy-main {
+      #copy-main {
         position: relative;
         font-family: var(--font-family);
         color: #2E2F32;
         margin: 0;
+        height: calc(100% - var(--mobile-logo-height));
       }
-      .headline {
+      #headline {
         font-size: 14px;
-        line-height: 20px;
-        font-weight: 400;
+        font-weight: normal;
         position: absolute;
         bottom: 0;
         color: #2E2F32;
-        margin-bottom: 0;
-        margin-top: 0;
       }
-      .subhead {
+      #subhead {
         display: none;
         color: #2E2F32;
       }
-      .cta {
+      #cta {
         display: none;
-        border-radius: 100px;
         position: absolute;
         bottom: 0;
-        height: 32px;
         box-sizing: border-box;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 24px;
         box-shadow: inset 0 0 0 1px #000;
-        padding: 0 16px;
-        font-size: 14px;
-        line-height: 30px;
+        border-radius: 100px;
         font-weight: 700;
         text-align: center;
         color: #2E2F32;
         background: #FFFFFF;
         border: 1px solid #2E2F32;
-        white-space: nowrap;
       }
-      @media only screen and (min-width: 553px)  {
-        .tile-container {
+      @media only screen and (min-width:429px) {
+        #tile-container {
           height: calc(var(--desktop-height) + var(--shadow));
         }
-        .tile {
+        #tile {
           height: var(--desktop-height);
         }
-        .img {
-          content: url(https://tpc.googlesyndication.com/simgad/15691463292599365538?)
+        #img {
+          margin: 0px;
         }
-        .img-container {
-          width: 544px;
+        #copy-overlay, #copy {
+          width: 192px;
         }
-        .copy-main {
-          height: 100%;
-        }
-        .headline {
+        #headline {
           font-size: 20px;
-          line-height: 28px;
-          font-weight: 700;
-          bottom: auto;
-          margin-top: 8px;
-        }
-        .cta {
-          display: block;
+          font-weight: bold;
         }
       }
-      @media only screen and (min-width: 853px) {
-        .img {
-          content: url(https://tpc.googlesyndication.com/simgad/3502554213628798611?)
+
+      @media only screen and (min-width: 769px) {
+        #copy-overlay, #copy {
+          width: 448px;
         }
-        .logo {
-          width: 61px;
-          height: 82px;
-          content: url(https://tpc.googlesyndication.com/simgad/8307602077684688974?)
-        }
-        .headline {
-          top: 0;
-        }
-        .cta {
-          display: none;
-        }
-      }
-      @media only screen and (min-width: 976px) {
-        .img-container {
-          width: 755px;
-        }
-        .cta {
-          display: none;
-        }
-      }
-      @media only screen and (min-width: 1135px) {
-        .headline {
-          position: relative;
-          margin-bottom: 8px;
-        }
-        .logo {
-          width: 100px;
-          height: 130px;
-        }
-        .subhead {
-          display: block;
-        }
-        .accent-bar {
-          display: block;
-          margin: 0 8px 0 16px;
-        }
-        .copy {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
+        #copy {
           padding: 16px;
-          padding-right: 8px;
+          display: flex;
         }
-        .cta {
+        #logo {
+          width: 100px;
+          height: var(--mobile-height);
+        }
+        #accent-bar {
+          display: block;
+          width: 1px;
+          margin: 0 24px;
+          background: #F1F1F2;
+        }
+        #copy-main {
+          width: 100%;
+          height: auto;
+        }
+        #headline {
+          position: relative;
+        }
+        #subhead {
+          display: block;
+          font-size: 16px;
+        }
+        #cta {
           display: block;
         }
       }
-      @media only screen and (min-width: 1183px) {
-        .copy {
+
+      @media only screen and (min-width: 1025px) {
+        #copy-overlay, #copy {
+          width: 477px;
+        }
+        #copy {
           padding: 24px;
         }
-        .accent-bar {
-          margin: 0 24px;
       }
       @font-face {
         font-family: BogleWeb;
         src: url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Bold.woff2) format("woff2"), url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Bold.woff) format("woff");
         font-weight: 700;
       }
+
       @font-face {
         font-family: BogleWeb;
         src: url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Regular.woff2) format("woff2"), url(https://i5.walmartimages.com/dfw/63fd9f59-a78c/fcfae9b6-2f69-4f89-beed-f0eeb4237946/v1/BogleWeb_subset-Regular.woff) format("woff");
@@ -215,28 +188,65 @@
     </style>
   
     
-    <a href="https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjss2N9guKN0Ptgf_iTQquoSTqDER3MleLDDNxTBG_1Oe7IMZx2SohbY91WgwGunuL-iVccuMbUI7dZTn3fkQQQgNhGqRUGy0-6x303dOP0MSDaXCMB4hN4ycUNc5BX5JaFmXhtRz8uVPKEtshaoqT3jiZCH6vMD3uVFhE5WVj1AjKTpq0MxIfxQhgarE1dlvex_IPhfbHYkMbgHlmpyBASenXF0lCbxpiPND9k43G75BTZ4tAQDHINAABcjAcfavXVmBexzcDcK6HGuVg_WMklsiu8ZYk1GbDGTcszvCPNchEKCwzDHQI22w3nm8tE9JsLXePMalJGJku2I1yrcPRsya6S6N9qtWTn5j3MgqrhTLKu6VPQ&amp;sai=AMfl-YQa3U_zqlfQTMiS08FQ3aaTeflrmVZgdCdqJw5N_UG5v7gMaN0eO4XsuCD_byfBrR88AWKJY4LLIcn9YvgnV38Q-nbX9l7k1uCCROgVBZ4gpw0hGrju2M_LFA&amp;sig=Cg0ArKJSzHfU56iI_3pzEAE&amp;fbs_aeid=%5Bgw_fbsaeid%5D&amp;urlfix=1&amp;adurl=https://www.walmart.com/ip/Pikmin-4-Nintendo-Switch/2580707903" class="adctr" target="_top" aria-label=". Grow, gather, guide. Lead your lil&#39; friends &amp; explore a colorful world. Shop now. Sponsored">  
-      <div class="tile-container">
-        <div class="tile">
-          <div class="copy">
-            <img class="logo" alt="">
-            <div class="accent-bar"></div>
-            <div class="copy-main">
-              <div class="headline">Grow, gather, guide</div>
-              <div class="subhead">Lead your lil' friends &amp; explore a colorful world.</div>
-              <div class="cta">Shop now</div>
-            </div>
-          </div>
-          <div class="img-container">
-            <img class="img" alt="Three little Pikmin characters stand on top of a wooden floor side by side a showcase Nintendo Switch OLED and Pikmin4.">        
+    <script>
+      (function () {
+        document.write('<scr' + 'ipt type="text/javascript"> var mobileImage = "https://tpc.googlesyndication.com/simgad/4267690797006041734?";var tabletImage = "https://tpc.googlesyndication.com/simgad/7627222797103453716?";var desktopImage = "https://tpc.googlesyndication.com/simgad/13192572673454463798?";var mobileLogo = "https://tpc.googlesyndication.com/simgad/11840049255100942881?";var desktopLogo = "https://tpc.googlesyndication.com/simgad/14791827187013722723?";</sc' + 'ript>');
+      })()   
+     </script><script type="text/javascript"> var mobileImage = "https://tpc.googlesyndication.com/simgad/4267690797006041734?";var tabletImage = "https://tpc.googlesyndication.com/simgad/7627222797103453716?";var desktopImage = "https://tpc.googlesyndication.com/simgad/13192572673454463798?";var mobileLogo = "https://tpc.googlesyndication.com/simgad/11840049255100942881?";var desktopLogo = "https://tpc.googlesyndication.com/simgad/14791827187013722723?";</script> 
+    <a href="https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsuGYZFA71m9EVclZyAzq9zBIrdVla3ieefWhXa-QZM2_KV0rzR7gXKiyMNPZMorIe_BRzevkl78Nx-HEM7OsAJQl3TOaxOvF20DbFwZbmyW5j_1tEc4Msr1AQEmNmzHwkoQ1fFDp0ZfBJmxd5kDc5TuahQxQtGP2XLg2i90ZFl7i0BbXB-EsjH0Dyz6hAKhnfIrp__tSd2A8C3Nt6KO-9EOX3AMEYuGdHxUy4JXPuZa4FeWwo26pqbMdjqWd3sSl3LosbPR4NxVIfNf_4Dua5QoYfGeUhqMSHAPUIuMemCg9q60e466wz8XdiohZanKziQZiJsIt5jPK57Va22YyN8Jb108CWx1Ws76lJ4TLg8PG2V_Bd76KIRujzJRX3bbEQ&amp;sai=AMfl-YRHUQ1Hlc5qnhfsBGGE57LoX5IgyG4gj4D0RgrNO7bYXhKAbhFnL9AieCP8KdBqiGcjZ7olzCwkFVEVIz98R-AyACBTcQIAf_wZIfTA6LiYIRBqQiHF02D9rQ&amp;sig=Cg0ArKJSzPvqk-HzI5sxEAE&amp;fbs_aeid=[gw_fbsaeid]&amp;urlfix=1&amp;adurl=https://www.walmart.com/ip/Nintendo-Switch-Mario-Kart-8-Deluxe-Bundle-Full-Game-Download-3-Mo-Nintendo-Switch-Online-Membership-Included/2611968172" class="adctr" target="_top" aria-label="Mario on a race car next to a packaged Nintendo Switch against a red background.. Fast track the fun. Includes system, full game download &amp; more.* Shop now. Sponsored">  
+    <div id="tile-container">
+      <div id="tile">
+        <img id="img" alt="Mario on a race car next to a packaged Nintendo Switch against a red background." src="./4267690797006041734">
+        <div id="copy-overlay"></div>
+        <div id="copy">
+        <img id="logo" alt="Mario on a race car next to a packaged Nintendo Switch against a red background." src="./11840049255100942881">
+        <div id="accent-bar"></div>
+          <div id="copy-main">
+            <div id="headline">Fast track the fun</div>
+            <div id="subhead">Includes system, full game download &amp; more.*</div>
+            <div id="cta">Shop now</div>
           </div>
         </div>
       </div>
+    </div>
     </a>
+    <script>
+      (function () {    
+        function handleResize() {
+          var bgImageEl = document.getElementById("img");
+          var logoEl = document.getElementById("logo");
+          var windowSize = window.innerWidth;
+          var bgImage;
+          var logoImage;
+          if (windowSize <= 428) {
+            bgImage = mobileImage;
+            logoImage = mobileLogo;
+          } else if (windowSize <= 768) {
+            bgImage = tabletImage;
+            logoImage = mobileLogo;
+          } else if (windowSize <= 1024) {
+            bgImage = tabletImage;
+            logoImage = desktopLogo;
+          } else {
+            bgImage = desktopImage;
+            logoImage = desktopLogo;
+          }
+          if (bgImageEl.src !== bgImage) {
+            bgImageEl.src = bgImage;
+          }
+          if (logoEl.src !== logoImage) {
+            logoEl.src = logoImage;
+          }
+        }
+        handleResize();
+        window.addEventListener("load", handleResize);
+        window.addEventListener("resize", handleResize);
+      })()
+    </script>
   
     
       <script>
-         document.write('<img src=https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjsta-3MM-1N-pIWftv2PWrvpZLr_75DAik9iyxeu504ZvdrPk6BKYlrrj3an1_hzKEiXdd7Vcpchp6O7-P7UYvHHRdDhtV3t-Qp3x9njI7UDFB1zK-IBTRPKOz13IZl1kNGJoCZ1D-p3MHq_Vapv8eHN6GvXbmg7Fq9PyHPYGim_6F06u7WyaPx33IuY6GpTXCBTQQEkuYDmqjy4sDfcVGOKnJxJ2I1SuLwmvCMMaCamN6JdZdSsj3yhAHQzt8pMjahGkH2BHhD7B6_7x0W0IJuLP0p6qoaWoyL2VRJEUVX3eCawhCEz7jrC_1E9Vof_HiNsT6dP0_Xt-i4dHVr9fgvbLO12VmByP1unOMCm6Y1XWBP9uYSgVWgQkJvAgvYNpLXLCXUpBsgK78ftvd_-CJqS87e-r8LQhw&sai=AMfl-YTO1I3RqbXOCBkbMxlnuoovIEMq9GgZlRe0QkozFtgH8a_MP_zl-nr7dA53HzQW0sc-DFYeI6H6cC47J-TR78l9ffnTpYh_eovbB0I4edYuDfxKbU0jBQi1yea9p0ab9Mfx&sig=Cg0ArKJSzNo_EHfhuJTzEAE&uach_m=%5BUACH%5D&urlfix=1&adurl= alt="" aria-label="" style="width:0;height:0;display:block"/>');
+         document.write('<img src=https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjstHSvr1ScGI1njvxTZ4zoPmjEHiPvU-IJe3DIFVwRUUawdIHm6HKkvcPBnknJCAj2OQb2o1Uz8mQJOEXYE7a7gW6ijq6CxauDIL-LXZla7Lm0AG6cHvE4ORpx9Wa-5wAWoEc61OCgRc-t28hqJo0ImynC3kSY8QFd7fRVOCGRY4einyUUfyMaiI8NJ3PyOvRBR8NkbRr4vb9JxDfTYLWJ_urj8oIeTxosQtfJDtxV-HJzi2rNq4AYHcONAWuGQ4zC5JPXfYBi9EtTpakEapLo7Ehigz35iFuRWQ5XmlPZzbULGX3ZkoD8hIev_py6gaqaNnjAqrqckRy4azw99_3YLkNALU5WcIf1WwpcIzpl1Gv3vxRdDc2ovdTBuQBNlQA4qUNO29fSSgWVGIwurn69-7igqZugmFjxC2sbWCDxVSUPj6zeP5Q_Z2TEpbeLrxoA&sai=AMfl-YQWhHbUz_pPtBC71ztHbZ8dpPmY9aFntVmQ1IqaiOpE57jJCUzuIzVc-qMrFNGzTDUB4YDZmU5DMkaiNwia_rnYaJ1ob5Xv5LbcyvFje8oAMveMKYnOEdi5Kr0OqeVg4QLB&sig=Cg0ArKJSzBSd7qYLwzN4EAE&uach_m=[UACH]&urlfix=1&adurl= alt="" aria-label="" style="width:0;height:0;display:block"/>');
       </script><img src="./view" alt="" aria-label="" style="width:0;height:0;display:block">
     
     
